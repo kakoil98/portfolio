@@ -1,0 +1,113 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: color-mix(in srgb, var(--color-surface) 84%, transparent);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--color-outline-variant);
+  z-index: 40;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav__brand {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-on-surface);
+  text-decoration: none;
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--space-xl);
+  list-style: none;
+
+  a {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-on-surface-variant);
+    transition: color 0.15s;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.nav__icon {
+  align-items: center;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  height: 36px;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  width: 36px;
+
+  &:hover {
+    background: var(--color-surface-container);
+    color: var(--color-primary);
+  }
+}
+
+main {
+  padding-top: 64px;
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-outline-variant);
+  padding-block: var(--space-xl);
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface-variant);
+}
+
+.footer-inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-lg);
+
+  a {
+    color: var(--color-on-surface-variant);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav {
+    height: 56px;
+  }
+
+  main {
+    padding-top: 56px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

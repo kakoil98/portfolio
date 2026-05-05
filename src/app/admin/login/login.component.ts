@@ -1,4 +1,4 @@
-import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
@@ -22,6 +22,7 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
             [(ngModel)]="email"
             autocomplete="email"
             required
+            [disabled]="submitting()"
           />
         </div>
         <div class="field">
@@ -33,12 +34,15 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
             [(ngModel)]="password"
             autocomplete="current-password"
             required
+            [disabled]="submitting()"
           />
         </div>
         @if (error()) {
           <p class="error" role="alert">{{ error() }}</p>
         }
-        <app-button type="submit">Sign In</app-button>
+        <app-button type="submit" [disabled]="submitting()">
+          {{ submitting() ? 'Signing in...' : 'Sign In' }}
+        </app-button>
       </form>
     </div>
   `,
@@ -81,27 +85,47 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
       border-color: var(--color-primary);
       box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 15%, transparent);
     }
+    input:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
     .error {
       color: var(--color-error);
       font-size: 13px;
     }
   `]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   private auth = inject(AuthService);
   private router = inject(Router);
 
   email = '';
   password = '';
   error = signal('');
+  submitting = signal(false);
+
+  async ngOnInit() {
+    const session = await this.auth.loadSession();
+    if (session) {
+      await this.router.navigate(['/admin/dashboard']);
+    }
+  }
 
   async onSubmit() {
+    if (this.submitting()) return;
+
     this.error.set('');
-    const { error } = await this.auth.signIn(this.email, this.password);
-    if (error) {
-      this.error.set(error.message);
-    } else {
-      this.router.navigate(['/admin/dashboard']);
+    this.submitting.set(true);
+
+    try {
+      const { error } = await this.auth.signIn(this.email, this.password);
+      if (error) {
+        this.error.set(error.message);
+      } else {
+        await this.router.navigate(['/admin/dashboard']);
+      }
+    } finally {
+      this.submitting.set(false);
     }
   }
 }

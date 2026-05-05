@@ -1,0 +1,126 @@
+<section class="container hero" id="Hero">
+  <div class="hero__status">
+    <span class="material-symbols-outlined">terminal</span>
+    <span>System Ready</span>
+  </div>
+  <h1>{{ settings()?.headline || 'Senior Angular Developer' }}</h1>
+  <p class="hero__bio">
+    {{ settings()?.bio || 'Architecting high-performance enterprise applications with precision, scalability, and technical rigor.' }}
+  </p>
+  <div class="hero__actions">
+    <a href="#Projects" class="action action--primary">View_Projects</a>
+    <a href="#Contact" class="action action--secondary">Get_In_Touch</a>
+  </div>
+</section>
+
+<section class="home-section home-section--tint" id="Skills">
+  <div class="container stack-layout">
+    <h2 class="section-title">Technical_Stack</h2>
+    @if (skills().length) {
+      <div class="stack-grid stack-grid--dynamic">
+        @for (group of groupedSkills() | keyvalue; track group.key) {
+          <article class="stack-card">
+            <span class="material-symbols-outlined">code</span>
+            <h3>{{ group.key || 'Core' }}</h3>
+            <p>{{ skillNames(group.value) }}</p>
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="stack-grid">
+        @for (item of fallbackStack; track item.title) {
+          <article class="stack-card">
+            <span class="material-symbols-outlined">{{ item.icon }}</span>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.detail }}</p>
+          </article>
+        }
+      </div>
+    }
+  </div>
+</section>
+
+<section class="container home-section" id="Experience">
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+    @for (exp of visibleExperiences(); track exp.id) {
+      <article class="timeline__item">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <span class="timeline__date">{{ exp.start_date }} — {{ exp.end_date || 'Present' }}</span>
+          <h3>{{ exp.role }}</h3>
+          <p class="timeline__company">{{ exp.company }}</p>
+          <p class="timeline__desc">{{ exp.description }}</p>
+          <div class="pill-row">
+            @for (tech of exp.tech_stack.slice(0, 4); track tech) {
+              <span class="tech-pill">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="home-section home-section--tint" id="Projects">
+  <div class="container">
+    <h2 class="section-title">Selected_Projects</h2>
+    <div class="project-grid">
+      @for (project of visibleProjects(); track project.id) {
+        <a [routerLink]="['/projects', project.id]" class="project-card">
+          <div class="project-card__media">
+            @if (project.image_url) {
+              <img [src]="project.image_url" [alt]="project.title" />
+            } @else {
+              <div class="project-card__fallback">
+                <span class="material-symbols-outlined">analytics</span>
+              </div>
+            }
+          </div>
+          <div class="project-card__body">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <div class="project-card__meta">
+              <div class="pill-row">
+                @for (tech of project.tech_stack.slice(0, 3); track tech) {
+                  <span class="tech-pill">{{ tech }}</span>
+                }
+              </div>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </div>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="container home-section contact-preview" id="Contact">
+  <div>
+    <h2 class="section-title">Initiate_Contact</h2>
+    <p>
+      Currently open to senior-level architectural roles, technical leadership, and Angular enterprise migration work.
+    </p>
+    @if (settings()?.email) {
+      <a class="contact-link" [href]="'mailto:' + settings()?.email">
+        <span class="material-symbols-outlined">mail</span>
+        {{ settings()?.email }}
+      </a>
+    }
+  </div>
+  <form class="contact-card">
+    <label>
+      <span>Name</span>
+      <input type="text" placeholder="John Doe" />
+    </label>
+    <label>
+      <span>Email</span>
+      <input type="email" placeholder="john@enterprise.com" />
+    </label>
+    <label>
+      <span>Message</span>
+      <textarea rows="4" placeholder="Project details and scope..."></textarea>
+    </label>
+    <button type="submit" class="action action--primary">Send_Message</button>
+  </form>
+</section>

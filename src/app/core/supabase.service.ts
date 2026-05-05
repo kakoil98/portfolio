@@ -9,6 +9,10 @@ export class SupabaseService {
   private _client: SupabaseClient | null = null;
 
   get client(): SupabaseClient {
+    if (!this.isBrowser) {
+      throw new Error('Supabase client is only available in the browser.');
+    }
+
     if (!this._client) {
       this._client = createClient(environment.supabaseUrl, environment.supabaseAnonKey);
     }
@@ -16,6 +20,6 @@ export class SupabaseService {
   }
 
   get isBrowser(): boolean {
-    return isPlatformBrowser(this.platformId);
+    return isPlatformBrowser(this.platformId) && typeof window !== 'undefined';
   }
 }

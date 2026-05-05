@@ -5,7 +5,7 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <button [class]="'btn btn--' + variant()" [type]="type()">
+    <button [class]="'btn btn--' + variant()" [type]="type()" [disabled]="disabled()">
       <ng-content />
     </button>
   `,
@@ -26,6 +26,10 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
       border: none;
     }
     .btn:hover { opacity: 0.85; }
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
     .btn--primary {
       background: var(--color-primary);
       color: var(--color-on-primary);
@@ -40,4 +44,5 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 export class ButtonComponent {
   variant = input<'primary' | 'secondary'>('primary');
   type = input<'button' | 'submit'>('button');
+  disabled = input(false);
 }

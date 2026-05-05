@@ -1,0 +1,28 @@
+<header class="site-header">
+  <nav class="container nav">
+    <a href="#" (click)="scrollTo($event, 'Hero')" class="nav__brand">DEV/CORE</a>
+    <ul class="nav__links">
+      <li><a href="#" (click)="scrollTo($event, 'Hero')">Home</a></li>
+      <li><a href="#" (click)="scrollTo($event, 'Skills')">Skills</a></li>
+      <li><a href="#" (click)="scrollTo($event, 'Experience')">Experience</a></li>
+      <li><a href="#" (click)="scrollTo($event, 'Projects')">Projects</a></li>
+      <li><a href="#" (click)="scrollTo($event, 'Contact')">Contact</a></li>
+    </ul>
+    <a href="#" (click)="scrollTo($event, 'Contact')" class="nav__icon" aria-label="Contact">
+      <span class="material-symbols-outlined">mail</span>
+    </a>
+  </nav>
+</header>
+<main>
+  <router-outlet />
+</main>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span class="label-caps">© 2026 Architectural Precision. Built with Angular & Supabase.</span>
+    <div class="footer-links">
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      <a routerLink="/admin/login">Admin</a>
+    </div>
+  </div>
+</footer>

@@ -10,28 +10,25 @@ export const routes: Routes = [
         loadComponent: () => import('./features/hero/hero.component').then(m => m.HeroComponent),
       },
       {
+        path: 'skills',
+        loadComponent: () => import('./features/hero/hero.component').then(m => m.HeroComponent),
+      },
+      {
+        path: 'experience',
+        loadComponent: () => import('./features/hero/hero.component').then(m => m.HeroComponent),
+      },
+      {
         path: 'projects',
-        loadComponent: () =>
-          import('./features/projects/projects.component').then(m => m.ProjectsComponent),
+        loadComponent: () => import('./features/hero/hero.component').then(m => m.HeroComponent),
+      },
+      {
+        path: 'contact',
+        loadComponent: () => import('./features/hero/hero.component').then(m => m.HeroComponent),
       },
       {
         path: 'projects/:id',
         loadComponent: () =>
           import('./features/projects/project-detail.component').then(m => m.ProjectDetailComponent),
-      },
-      {
-        path: 'experiences',
-        loadComponent: () =>
-          import('./features/experiences/experiences.component').then(m => m.ExperiencesComponent),
-      },
-      {
-        path: 'about',
-        loadComponent: () => import('./features/about/about.component').then(m => m.AboutComponent),
-      },
-      {
-        path: 'contact',
-        loadComponent: () =>
-          import('./features/contact/contact.component').then(m => m.ContactComponent),
       },
     ],
   },

@@ -1,32 +1,35 @@
 import { Component, inject, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { KeyValuePipe } from '@angular/common';
 import { SupabaseService } from '../../core/supabase.service';
-import { BadgeComponent } from '../../shared/ui/badge/badge.component';
-import { Skill, SiteSettings } from '../../shared/models';
+import { Skill } from '../../shared/models';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [BadgeComponent, KeyValuePipe],
+  imports: [KeyValuePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="container about">
-      <h2>About</h2>
-      @if (bio()) {
-        <p class="about__bio">{{ bio() }}</p>
-      }
+      <div class="about__intro">
+        <h1>Technical_Stack</h1>
+        @if (bio()) {
+          <p>{{ bio() }}</p>
+        } @else {
+          <p>Focused on Angular architecture, reactive systems, accessible UI, and scalable frontend delivery.</p>
+        }
+      </div>
 
       @if (skills().length) {
         <div class="skills">
           @for (group of groupedSkills() | keyvalue; track group.key) {
-            <div class="skills__group">
+            <article class="skills__group">
               <p class="label-caps skills__category">{{ group.key }}</p>
-              <div class="skills__tags">
+              <ul>
                 @for (skill of group.value; track skill.id) {
-                  <app-badge variant="tech">{{ skill.name }}</app-badge>
+                  <li>{{ skill.name }}</li>
                 }
-              </div>
-            </div>
+              </ul>
+            </article>
           }
         </div>
       }
@@ -34,29 +37,64 @@ import { Skill, SiteSettings } from '../../shared/models';
   `,
   styles: [`
     .about {
-      padding-block: var(--space-xl);
+      display: grid;
+      gap: 80px;
+      grid-template-columns: minmax(260px, 0.75fr) 1.5fr;
+      padding-block: 80px;
     }
-    h2 {
+    h1 {
       margin-bottom: var(--space-md);
     }
-    .about__bio {
+    .about__intro {
+      position: sticky;
+      top: 112px;
+      align-self: start;
+    }
+    .about__intro p {
       color: var(--color-on-surface-variant);
-      max-width: 65ch;
-      margin-bottom: var(--space-xl);
+      max-width: 420px;
     }
     .skills {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-lg);
+      display: grid;
+      gap: var(--space-xl);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .skills__group {
+      border-left: 4px solid var(--color-outline-variant);
+      padding-left: var(--space-lg);
+    }
+    .skills__group:first-child {
+      border-left-color: var(--color-primary);
     }
     .skills__category {
-      color: var(--color-on-surface-variant);
+      color: var(--color-primary);
       margin-bottom: var(--space-sm);
     }
-    .skills__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
+    ul {
+      display: grid;
+      gap: var(--space-xs);
+      list-style: none;
+    }
+    li {
+      color: var(--color-on-surface);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    @media (max-width: 720px) {
+      .about {
+        display: block;
+        padding-block: var(--space-xl);
+      }
+      .about__intro {
+        position: static;
+        margin-bottom: var(--space-xl);
+      }
+      .skills {
+        grid-template-columns: 1fr;
+      }
+      li {
+        font-size: 15px;
+      }
     }
   `]
 })
@@ -67,12 +105,14 @@ export class AboutComponent implements OnInit {
 
   groupedSkills = computed(() =>
     this.skills().reduce((acc, skill) => {
-      (acc[skill.category] ??= []).push(skill);
+      (acc[skill.category || 'Core'] ??= []).push(skill);
       return acc;
     }, {} as Record<string, Skill[]>)
   );
 
   async ngOnInit() {
+    if (!this.supabase.isBrowser) return;
+
     const [settingsRes, skillsRes] = await Promise.all([
       this.supabase.client.from('site_settings').select('bio').single(),
       this.supabase.client.from('skills').select('*').order('display_order'),

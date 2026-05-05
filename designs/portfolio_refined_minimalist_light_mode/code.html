@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Senior Angular Developer | Technical Precision Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dae1ff",
+                        "surface-variant": "#dce2f7",
+                        "on-tertiary-container": "#fff6f4",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "surface-container-high": "#e1e8fd",
+                        "inverse-primary": "#b3c5ff",
+                        "tertiary": "#a33200",
+                        "on-secondary-fixed-variant": "#004e61",
+                        "on-tertiary-fixed-variant": "#832600",
+                        "secondary-container": "#76dcff",
+                        "surface-dim": "#d3daef",
+                        "secondary": "#006780",
+                        "surface-bright": "#f9f9ff",
+                        "primary": "#0050cb",
+                        "on-background": "#141b2b",
+                        "on-secondary-fixed": "#001f28",
+                        "secondary-fixed-dim": "#6cd3f7",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "outline-variant": "#c2c6d8",
+                        "tertiary-container": "#cc4204",
+                        "on-primary-container": "#f8f7ff",
+                        "surface": "#f9f9ff",
+                        "primary-container": "#0066ff",
+                        "on-tertiary-fixed": "#390c00",
+                        "background": "#f9f9ff",
+                        "on-surface": "#141b2b",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#293040",
+                        "outline": "#727687",
+                        "secondary-fixed": "#b7eaff",
+                        "on-surface-variant": "#424656",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-primary-fixed": "#001849",
+                        "surface-tint": "#0054d6",
+                        "surface-container": "#e9edff",
+                        "on-secondary-container": "#006077",
+                        "tertiary-fixed": "#ffdbd0",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#edf0ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#dce2f7",
+                        "surface-container-low": "#f1f3ff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "md": "16px",
+                        "gutter": "20px",
+                        "unit": "4px",
+                        "container-max": "1280px",
+                        "stack-lg": "80px",
+                        "stack-md": "32px",
+                        "stack-sm": "12px",
+                        "margin": "48px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "code-sm": ["12px", {"lineHeight": "1.5", "fontWeight": "450"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-xl": ["56px", {"lineHeight": "1.05", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                        "body-md": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary transition-colors duration-300">
+<!-- Navigation -->
+<header class="fixed top-0 w-full bg-surface-bright/80 backdrop-blur-md border-b border-outline-variant z-50">
+<nav class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-on-background tracking-tighter">
+            DEV/CORE
+        </div>
+<div class="hidden md:flex items-center gap-stack-md">
+<a class="font-label-caps text-label-caps text-on-background border-b-2 border-primary pb-1 transition-all duration-200" href="#Hero">HERO</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#Experience">EXPERIENCE</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#Projects">PROJECTS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#Skills">SKILLS</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#Contact">CONTACT</a>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button aria-label="Toggle light mode" class="p-2 hover:bg-surface-variant transition-all duration-200 rounded-full">
+<span class="material-symbols-outlined text-on-background" data-icon="light_mode">light_mode</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section: Minimalist & Professional -->
+<section class="min-h-screen flex flex-col justify-center px-gutter max-w-container-max mx-auto" id="Hero">
+<div class="max-w-3xl">
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-stack-sm">
+                Senior Angular Developer
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg max-w-xl">
+                Architecting high-performance enterprise applications with technical precision, modern reactive patterns, and scalable micro-frontend architectures.
+            </p>
+<div class="flex flex-wrap gap-stack-md">
+<a class="px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps hover:brightness-110 transition-all rounded shadow-lg shadow-primary/20" href="#Projects">VIEW_PROJECTS</a>
+<a class="px-8 py-4 border border-outline text-on-surface font-label-caps text-label-caps hover:bg-surface-container transition-all rounded" href="#Contact">GET_IN_TOUCH</a>
+</div>
+</div>
+</section>
+<!-- Experience Section (Timeline) -->
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto border-t border-outline-variant" id="Experience">
+<h2 class="font-headline-lg text-headline-lg mb-stack-lg flex items-center gap-stack-sm uppercase tracking-tight">
+<span class="w-12 h-[2px] bg-primary"></span> Experience
+        </h2>
+<div class="space-y-stack-lg relative before:absolute before:left-0 md:before:left-1/2 before:w-[1px] before:h-full before:bg-outline-variant">
+<!-- Role 1 -->
+<div class="relative grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="md:text-right md:pr-margin order-2 md:order-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Principal Frontend Architect</h3>
+<p class="font-label-caps text-label-caps text-primary mt-unit">GLOBAL TECH SOLUTIONS • 2021—PRESENT</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-stack-sm">Led the migration of a legacy monolithic enterprise platform to a micro-frontend architecture using Angular and Module Federation.</p>
+</div>
+<div class="hidden md:block order-2"></div>
+<div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-primary border-4 border-background rounded-full z-10 top-2"></div>
+</div>
+<!-- Role 2 -->
+<div class="relative grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="hidden md:block"></div>
+<div class="md:pl-margin">
+<h3 class="font-headline-md text-headline-md text-on-surface">Senior Angular Developer</h3>
+<p class="font-label-caps text-label-caps text-primary mt-unit">NEXUS ENTERPRISE • 2018—2021</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-stack-sm">Optimized RxJS stream handling across large-scale financial dashboards, reducing memory footprint by 40% and improving load times.</p>
+</div>
+<div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 bg-primary border-4 border-background rounded-full z-10 top-2"></div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto border-t border-outline-variant" id="Projects">
+<h2 class="font-headline-lg text-headline-lg mb-stack-lg uppercase tracking-tight">Selected_Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-margin">
+<!-- Project 1 -->
+<div class="group bg-surface-container-low p-stack-md hover:shadow-xl transition-all duration-500 rounded-lg border border-outline-variant/30">
+<div class="aspect-video bg-surface-container overflow-hidden mb-stack-md border border-outline-variant rounded">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A clean, minimalist dashboard interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK0inH_Z-OcSvu1_ehkuThfrVslVWs_DJNb--cOJQHvVROz2JXnEhuMDpudwudc3CFsr31BLPN2M1cBAKGf_Sf38owV0L8k2JG9CnnHNmKATbl74xjQ_eyR9lsaX3rNY3jbM4vyFCfCXgpWixsJsektoOS37UffrgPvqUAEhHMPdKHa09JrbhvfLQ91KroyVoBTTRQoyzyeKlc7X1Tks6L97UQRgyjVqCe8OFdwsTDw-cTxWiFmdqj4v1UbCBFR3ek7Lsuo5b7iW8"/>
+</div>
+<h3 class="font-headline-md text-headline-md mb-stack-sm text-on-surface">QuantFlow Dashboard</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md">High-frequency trading interface built with Angular, NgRx, and WebSockets for real-time telemetry.</p>
+<div class="flex flex-wrap gap-stack-sm">
+<span class="font-label-caps text-label-caps bg-primary/10 text-primary px-3 py-1 rounded-full">ANGULAR</span>
+<span class="font-label-caps text-label-caps bg-primary/10 text-primary px-3 py-1 rounded-full">NGRX</span>
+<span class="font-label-caps text-label-caps bg-primary/10 text-primary px-3 py-1 rounded-full">RXJS</span>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group bg-surface-container-low p-stack-md hover:shadow-xl transition-all duration-500 rounded-lg border border-outline-variant/30">
+<div class="aspect-video bg-surface-container overflow-hidden mb-stack-md border border-outline-variant rounded">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Abstract visualization of a cloud computing network" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbGXQm9ImfZej6CTavBI5TkSWKEd9K8aR_5TXo4Qam6NObUeVp79LC67JSTID_SY7Uljz-CVfmkW6TNSKqN1zsZ-uBhF8eYXUOUIjp7jPJWCPukujelbBWINB5zs1Zws-jSbEIfd51rsOb6dJ-jqz2OzM7EPUMK4CUjmbJq843j_CXzpPYK8Ykkj_Yp1NtEYbC4B2ul-nhYgyXZSsXpit0JDCxHK23kmwSomx2VxBZscy_sbv9701xU1UZ6ebT5PfmkCMO1Gw2G6c"/>
+</div>
+<h3 class="font-headline-md text-headline-md mb-stack-sm text-on-surface">CoreGrid Microservices</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md">A unified design system and component library supporting 12+ enterprise micro-apps.</p>
+<div class="flex flex-wrap gap-stack-sm">
+<span class="font-label-caps text-label-caps bg-primary/10 text-primary px-3 py-1 rounded-full">STORYBOOK</span>
+<span class="font-label-caps text-label-caps bg-primary/10 text-primary px-3 py-1 rounded-full">NX</span>
+<span class="font-label-caps text-label-caps bg-primary/10 text-primary px-3 py-1 rounded-full">TYPESCRIPT</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Stack Section -->
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto border-t border-outline-variant" id="Skills">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<div class="lg:col-span-4">
+<h2 class="font-headline-lg text-headline-lg sticky top-32 uppercase tracking-tight">Technical_Stack</h2>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-margin">
+<div class="space-y-stack-md">
+<div class="border-l-4 border-primary pl-stack-md">
+<h4 class="font-label-caps text-label-caps text-primary">FRONTEND_CORE</h4>
+<ul class="font-body-lg text-body-lg mt-stack-sm space-y-unit text-on-surface">
+<li>Angular 17+ (Signals)</li>
+<li>RxJS / Reactive Patterns</li>
+<li>NgRx / Akita / State Mgmt</li>
+<li>TypeScript / ESNext</li>
+</ul>
+</div>
+<div class="border-l-4 border-outline-variant pl-stack-md">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant">TOOLING</h4>
+<ul class="font-body-lg text-body-lg mt-stack-sm space-y-unit text-on-surface">
+<li>Nx Monorepos</li>
+<li>Webpack / Vite</li>
+<li>Jest / Cypress / Spectator</li>
+<li>CI/CD (GitHub Actions)</li>
+</ul>
+</div>
+</div>
+<div class="space-y-stack-md">
+<div class="border-l-4 border-outline-variant pl-stack-md">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant">ARCHITECTURES</h4>
+<ul class="font-body-lg text-body-lg mt-stack-sm space-y-unit text-on-surface">
+<li>Micro-Frontends</li>
+<li>Atomic Design</li>
+<li>Server Side Rendering</li>
+<li>Progressive Web Apps</li>
+</ul>
+</div>
+<div class="border-l-4 border-outline-variant pl-stack-md">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant">STYLING</h4>
+<ul class="font-body-lg text-body-lg mt-stack-sm space-y-unit text-on-surface">
+<li>Tailwind CSS</li>
+<li>SCSS / Design Tokens</li>
+<li>Material Design</li>
+<li>CSS Variable Systems</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto border-t border-outline-variant bg-surface-container-low/30" id="Contact">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-margin">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-stack-md uppercase tracking-tight">Initiate_Contact</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-margin max-w-md">
+                    Currently open to senior-level architectural roles or strategic consulting for Angular enterprise migrations. Let's build something exceptional.
+                </p>
+<div class="space-y-stack-sm">
+<a class="flex items-center gap-stack-sm group" href="mailto:architect@devcore.tech">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+<span class="font-code-sm text-code-sm group-hover:text-primary transition-colors text-on-surface">architect@devcore.tech</span>
+</a>
+<div class="flex gap-stack-md pt-stack-sm">
+<a class="font-label-caps text-label-caps hover:text-primary transition-colors text-on-surface-variant" href="#">GITHUB</a>
+<a class="font-label-caps text-label-caps hover:text-primary transition-colors text-on-surface-variant" href="#">LINKEDIN</a>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-stack-md border border-outline-variant rounded-xl shadow-lg">
+<form class="space-y-stack-md">
+<div>
+<label class="font-label-caps text-label-caps mb-unit block text-on-surface-variant">NAME</label>
+<input class="w-full bg-background border border-outline-variant px-stack-sm py-3 font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none rounded" placeholder="John Doe" type="text"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps mb-unit block text-on-surface-variant">EMAIL</label>
+<input class="w-full bg-background border border-outline-variant px-stack-sm py-3 font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none rounded" placeholder="john@enterprise.com" type="email"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps mb-unit block text-on-surface-variant">MESSAGE</label>
+<textarea class="w-full bg-background border border-outline-variant px-stack-sm py-3 font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none rounded" placeholder="Project details and scope..." rows="4"></textarea>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary font-label-caps text-label-caps hover:brightness-110 transition-all rounded" type="submit">SEND_MESSAGE</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant py-stack-md">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto gap-stack-sm">
+<div class="font-label-caps text-label-caps text-on-surface opacity-60">
+            © 2024 ARCHITECTURAL PRECISION. BUILT WITH ANGULAR &amp; TAILWIND.
+        </div>
+<div class="flex gap-stack-md">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">GitHub</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Source</a>
+</div>
+</div>
+</footer>
+</body></html>
